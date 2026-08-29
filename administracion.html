@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Consultoría · Panel interno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="fondo-superposicion" id="fondo-superposicion"></div>
+
+<div class="app-shell">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-marca">
+      <img src="assets/logo.svg" alt="Logo provisional de Consultoría">
+      <span>PANEL CONSULTORÍA</span>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegación principal">
+      <a href="#inicio" data-seccion="inicio"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</a>
+      <a href="#empresas" data-seccion="empresas"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V7l6-4 6 4v14M9 9h1m4 0h1m-6 4h1m4 0h1"/></svg>Empresas</a>
+      <a href="#proyectos" data-seccion="proyectos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h5l2-2h6l2 2h3v12H3z"/></svg>Proyectos</a>
+      <a href="#contenido" data-seccion="contenido"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Contenido</a>
+      <a href="#documentos" data-seccion="documentos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Documentos</a>
+      <a href="#solicitudes" data-seccion="solicitudes"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h6"/></svg>Solicitudes</a>
+      <a href="#servicios" data-seccion="servicios"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1-1.55 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09a1.7 1.7 0 001.55-1 1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34H9a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87V9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.55 1z"/></svg>Catálogo de servicios</a>
+      <a href="#usuarios" data-seccion="usuarios"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M16 3.5a4 4 0 010 8"/><path d="M22 21c0-3-2-5-4.5-5.7"/></svg>Usuarios</a>
+    </nav>
+    <div class="sidebar-pie">
+      Panel de Consultoría · Prototipo v1<br>
+      <button type="button" id="btn-cerrar-sesion">Cerrar sesión de demostración</button>
+      <br><br>
+      <button type="button" id="btn-restablecer-demo">Restablecer datos de demostración</button>
+    </div>
+  </aside>
+
+  <div class="area-principal">
+    <header class="header-superior">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="boton-menu-movil" id="btn-menu-movil" aria-label="Abrir menú">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <div class="header-contexto">
+          <strong>Consultoría</strong>
+          <span class="separador oculto-movil">/</span>
+          <span class="oculto-movil">Panel interno de administración</span>
+        </div>
+      </div>
+      <div class="header-acciones">
+        <span class="etiqueta-demo-header" role="status">
+          <span class="visible-escritorio-badge">Entorno de demostración · Datos ficticios</span>
+          <span class="visible-movil-badge">Demo</span>
+        </span>
+        <button class="boton-icono" aria-label="Notificaciones">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+          <span class="punto-notificacion" aria-hidden="true"></span>
+        </button>
+        <div class="usuario-chip">
+          <div class="usuario-avatar" id="avatar-usuario">RI</div>
+          <div>
+            <div class="usuario-nombre" id="nombre-usuario">Rodrigo Insfrán</div>
+            <div class="usuario-cargo" id="cargo-usuario">Consultor Senior</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="contenido-pagina">
+
+      <!-- =================== INICIO ADMIN =================== -->
+      <section class="vista" id="vista-inicio">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Panel de Consultoría</span>
+            <h1>Resumen general</h1>
+            <p>Estado de las empresas, proyectos y solicitudes gestionadas actualmente.</p>
+          </div>
+        </div>
+
+        <div class="grid-tarjetas grid-4" style="margin-bottom:20px;">
+          <div class="panel-kpi"><span class="etiqueta">Empresas activas</span><span class="valor dato-cifra" id="kpi-empresas">—</span></div>
+          <div class="panel-kpi"><span class="etiqueta">Proyectos activos</span><span class="valor dato-cifra" id="kpi-proyectos">—</span></div>
+          <div class="panel-kpi tono-ambar"><span class="etiqueta">Informes pendientes de revisión</span><span class="valor dato-cifra" id="kpi-pendientes">—</span></div>
+          <div class="panel-kpi tono-verde"><span class="etiqueta">Solicitudes nuevas</span><span class="valor dato-cifra" id="kpi-solicitudes-nuevas">—</span></div>
+        </div>
+
+        <div class="grid-tarjetas" style="grid-template-columns:1fr 1fr;align-items:start;">
+          <div class="tarjeta">
+            <h3>Proyectos por estado</h3>
+            <canvas id="grafico-proyectos-estado" height="220"></canvas>
+          </div>
+          <div class="tarjeta">
+            <h3>Actividad reciente</h3>
+            <div id="lista-actividad-reciente" style="display:flex;flex-direction:column;gap:12px;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== EMPRESAS =================== -->
+      <section class="vista oculto" id="vista-empresas">
+        <div class="encabezado-seccion">
+          <div><span class="eyebrow">Cartera</span><h1>Empresas</h1><p>Empresas actualmente atendidas por Consultoría.</p></div>
+        </div>
+        <div class="tabla-envoltorio tarjeta" style="padding:0;">
+          <table class="tabla-datos">
+            <thead><tr><th>Empresa</th><th>Proyecto activo</th><th>Usuarios</th><th></th></tr></thead>
+            <tbody id="cuerpo-empresas"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =================== PROYECTOS =================== -->
+      <section class="vista oculto" id="vista-proyectos">
+        <div class="encabezado-seccion">
+          <div><span class="eyebrow">Seguimiento</span><h1>Proyectos</h1><p>Estado de avance de cada proyecto de consultoría.</p></div>
+        </div>
+        <div class="barra-filtros">
+          <div class="grupo-filtro">
+            <label for="filtro-estado-proyecto">Estado</label>
+            <select id="filtro-estado-proyecto"><option value="todas">Todos</option></select>
+          </div>
+        </div>
+        <div class="tabla-envoltorio tarjeta" style="padding:0;">
+          <table class="tabla-datos">
+            <thead><tr><th>Empresa</th><th>Proyecto</th><th>Consultor responsable</th><th>Estado</th><th>Actualizado</th><th>Usuarios</th><th></th></tr></thead>
+            <tbody id="cuerpo-proyectos"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =================== CONSTRUCTOR DE CONTENIDO =================== -->
+      <section class="vista oculto" id="vista-contenido">
+        <div class="encabezado-seccion">
+          <div><span class="eyebrow">Diagnóstico Organizacional 2026 · Empresa Demo S.A.</span><h1>Constructor de contenido</h1><p>Vista simulada de cómo el equipo de Consultoría administra el contenido que verá el cliente.</p></div>
+        </div>
+
+        <div class="barra-filtros" style="margin-bottom:16px;">
+          <div class="grupo-filtro">
+            <label for="selector-bloque-contenido">Bloque</label>
+            <select id="selector-bloque-contenido">
+              <option value="resumen">Resumen ejecutivo</option>
+              <option value="indicadores">Indicadores</option>
+              <option value="fortalezas">Fortalezas</option>
+              <option value="oportunidades">Oportunidades</option>
+              <option value="recomendaciones">Recomendaciones</option>
+              <option value="plan">Plan de acción</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tarjeta">
+          <div class="encabezado-item" style="margin-bottom:14px;">
+            <h3 id="titulo-bloque-contenido">Resumen ejecutivo</h3>
+            <span class="etiqueta-estado estado-positivo" id="estado-bloque-contenido">Publicado</span>
+          </div>
+          <div id="cuerpo-bloque-contenido"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid var(--gris-borde);align-items:center;">
+            <button class="boton boton-secundario" data-accion-contenido="agregar">Agregar elemento</button>
+            <button class="boton boton-secundario" data-accion-contenido="editar">Editar</button>
+            <button class="boton boton-secundario" data-accion-contenido="borrador">Guardar borrador</button>
+            <button class="boton boton-secundario" data-accion-contenido="descartar">Descartar cambios</button>
+            <button class="boton boton-secundario" data-accion-contenido="ocultar">Ocultar al cliente</button>
+            <button class="boton boton-destacado" data-accion-contenido="aprobar">Aprobar</button>
+            <button class="boton boton-primario" data-accion-contenido="publicar">Publicar</button>
+          </div>
+          <p id="mensaje-borrador-contenido" class="oculto" style="font-size:0.82rem;color:var(--verde);margin:10px 0 0;">
+            ✓ Cambios de demostración guardados localmente.
+          </p>
+        </div>
+      </section>
+
+      <!-- =================== DOCUMENTOS ADMIN =================== -->
+      <section class="vista oculto" id="vista-documentos">
+        <div class="encabezado-seccion">
+          <div><span class="eyebrow">Entregables</span><h1>Documentos</h1><p>Documentos cargados para el proyecto activo.</p></div>
+        </div>
+        <div class="tabla-envoltorio tarjeta" style="padding:0;">
+          <table class="tabla-datos">
+            <thead><tr><th>Documento</th><th>Tipo</th><th>Fecha</th><th>Versión</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="cuerpo-documentos-admin"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =================== SOLICITUDES ADMIN =================== -->
+      <section class="vista oculto" id="vista-solicitudes">
+        <div class="encabezado-seccion">
+          <div><span class="eyebrow">Bandeja</span><h1>Solicitudes recibidas</h1><p>Incluye las solicitudes creadas desde el portal del cliente en este navegador.</p></div>
+        </div>
+        <div class="barra-filtros">
+          <div class="grupo-filtro">
+            <label for="filtro-estado-solicitud-admin">Estado</label>
+            <select id="filtro-estado-solicitud-admin"><option value="todas">Todos</option></select>
+          </div>
+        </div>
+        <div class="tabla-envoltorio tarjeta" style="padding:0;">
+          <table class="tabla-datos">
+            <thead><tr><th>Empresa</th><th>Contacto</th><th>Oportunidad</th><th>Servicio</th><th>Fecha</th><th>Responsable</th><th>Estado</th><th></th></tr></thead>
+            <tbody id="cuerpo-solicitudes-admin"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =================== CATÁLOGO DE SERVICIOS ADMIN =================== -->
+      <section class="vista oculto" id="vista-servicios">
+        <div class="encabezado-seccion">
+          <div><span class="eyebrow">Oferta de Consultoría</span><h1>Catálogo de servicios</h1><p>Servicios disponibles para acompañar a los clientes.</p></div>
+        </div>
+        <div class="grid-tarjetas grid-3" id="lista-servicios-admin"></div>
+      </section>
+
+      <!-- =================== USUARIOS ADMIN =================== -->
+      <section class="vista oculto" id="vista-usuarios">
+        <div class="encabezado-seccion">
+          <div><span class="eyebrow">Equipo</span><h1>Usuarios de Consultoría</h1><p>Consultores con acceso al panel interno.</p></div>
+        </div>
+        <div class="tabla-envoltorio tarjeta" style="padding:0;">
+          <table class="tabla-datos">
+            <thead><tr><th>Nombre</th><th>Cargo</th><th>Correo</th><th>Proyectos asignados</th><th>Estado</th></tr></thead>
+            <tbody id="cuerpo-usuarios-admin"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- MODAL: RESTABLECER DEMOSTRACIÓN -->
+<div class="fondo-modal" id="fondo-modal-restablecer">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-restablecer" style="max-width:480px;">
+    <div class="modal-encabezado">
+      <h2 id="titulo-modal-restablecer">Restablecer datos de demostración</h2>
+      <button class="modal-cerrar" id="cerrar-modal-restablecer" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-cuerpo" id="cuerpo-modal-restablecer">
+      <p style="font-size:0.88rem;">Esta acción eliminará únicamente los cambios que quedaron guardados en este navegador durante la demostración:</p>
+      <ul style="font-size:0.85rem;color:var(--gris-texto);padding-left:18px;margin:0 0 12px;">
+        <li>Solicitudes de acompañamiento creadas desde el portal del cliente.</li>
+        <li>Cambios de estado y avance del plan de acción.</li>
+        <li>Borradores y estados guardados en el constructor de contenido.</li>
+      </ul>
+      <p style="font-size:0.85rem;">Los datos originales del prototipo (empresa, proyecto, áreas, fortalezas, oportunidades, documentos, servicios) no se modifican, ya que provienen de <code>datos-demo.js</code> y no de este navegador.</p>
+    </div>
+    <div class="modal-pie">
+      <button class="boton boton-secundario" id="cancelar-modal-restablecer">Cancelar</button>
+      <button class="boton boton-peligro" id="confirmar-modal-restablecer">Restablecer</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: DETALLE DE SOLICITUD (ADMIN) -->
+<div class="fondo-modal" id="fondo-modal-detalle-solicitud">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-detalle-solicitud">
+    <div class="modal-encabezado">
+      <h2 id="titulo-modal-detalle-solicitud">Detalle de la solicitud</h2>
+      <button class="modal-cerrar" id="cerrar-modal-detalle-solicitud" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-cuerpo" id="cuerpo-modal-detalle-solicitud"></div>
+  </div>
+</div>
+
+<script src="js/datos-demo.js"></script>
+<script src="js/servicios.js"></script>
+<script src="js/utilidades.js"></script>
+<script src="js/administracion.js"></script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Consultoría · Cliente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="fondo-superposicion" id="fondo-superposicion"></div>
+
+<div class="app-shell">
+
+  <!-- ============================= SIDEBAR ============================= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-marca">
+      <img src="assets/logo.svg" alt="Logo provisional de Consultoría">
+      <span>PORTAL CLIENTE</span>
+    </div>
+    <nav class="sidebar-nav" aria-label="Navegación principal">
+      <a href="#inicio" data-seccion="inicio"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</a>
+      <a href="#resultados" data-seccion="resultados"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>Resultados</a>
+      <a href="#fortalezas" data-seccion="fortalezas"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.6 6.6L22 9l-5.4 4.6L18 21l-6-4-6 4 1.4-7.4L2 9l7.4-.4z"/></svg>Fortalezas</a>
+      <a href="#oportunidades" data-seccion="oportunidades"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16" r=".5" fill="currentColor"/></svg>Oportunidades</a>
+      <a href="#plan-accion" data-seccion="plan-accion"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Plan de acción</a>
+      <a href="#asistente-ia" data-seccion="asistente-ia"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Consultar a la IA</a>
+      <a href="#documentos" data-seccion="documentos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Documentos</a>
+      <a href="#solicitudes" data-seccion="solicitudes"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h6"/></svg>Solicitudes</a>
+      <a href="#perfil" data-seccion="perfil"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Perfil</a>
+    </nav>
+    <div class="sidebar-pie">
+      Portal de Consultoría · Prototipo v1<br>
+      <button type="button" id="btn-cerrar-sesion">Cerrar sesión de demostración</button>
+    </div>
+  </aside>
+
+  <!-- ============================= ÁREA PRINCIPAL ============================= -->
+  <div class="area-principal">
+
+    <header class="header-superior">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="boton-menu-movil" id="btn-menu-movil" aria-label="Abrir menú">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <div class="header-contexto">
+          <strong id="header-empresa">Empresa Demo S.A.</strong>
+          <span class="separador oculto-movil">/</span>
+          <span class="oculto-movil" id="header-proyecto">Diagnóstico Organizacional 2026</span>
+        </div>
+      </div>
+      <div class="header-acciones">
+        <span class="etiqueta-demo-header" role="status">
+          <span class="visible-escritorio-badge">Entorno de demostración · Datos ficticios</span>
+          <span class="visible-movil-badge">Demo</span>
+        </span>
+        <button class="boton-icono" aria-label="Notificaciones">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+          <span class="punto-notificacion" aria-hidden="true"></span>
+        </button>
+        <div class="usuario-chip">
+          <div class="usuario-avatar" id="avatar-usuario">MD</div>
+          <div>
+            <div class="usuario-nombre" id="nombre-usuario">Marcela Duarte</div>
+            <div class="usuario-cargo" id="cargo-usuario">Gerente General</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="contenido-pagina">
+
+      <!-- =================== INICIO =================== -->
+      <section class="vista" id="vista-inicio">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Panel general</span>
+            <h1 id="saludo-usuario">Hola, Marcela</h1>
+            <p>Este es el estado general del diagnóstico de <strong id="inicio-empresa">Empresa Demo S.A.</strong></p>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button class="boton boton-secundario" data-ir-a="resultados">Ver resultados completos</button>
+            <button class="boton boton-primario" data-ir-a="asistente-ia">Consultar el informe con IA</button>
+          </div>
+        </div>
+
+        <div class="grid-tarjetas grid-4" style="margin-bottom:22px;">
+          <div class="panel-kpi tono-verde">
+            <span class="etiqueta">Puntuación general</span>
+            <span class="valor dato-cifra" id="kpi-puntuacion">—</span>
+            <span class="detalle" id="kpi-estado-general">—</span>
+          </div>
+          <div class="panel-kpi">
+            <span class="etiqueta">Fortalezas identificadas</span>
+            <span class="valor dato-cifra" id="kpi-fortalezas">—</span>
+            <span class="detalle">En las 5 áreas evaluadas</span>
+          </div>
+          <div class="panel-kpi tono-ambar">
+            <span class="etiqueta">Oportunidades de mejora</span>
+            <span class="valor dato-cifra" id="kpi-oportunidades">—</span>
+            <span class="detalle">Con plan de acción asociado</span>
+          </div>
+          <div class="panel-kpi tono-rojo">
+            <span class="etiqueta">Acciones prioritarias</span>
+            <span class="valor dato-cifra" id="kpi-prioritarias">—</span>
+            <span class="detalle">Prioridad alta en el plan</span>
+          </div>
+        </div>
+
+        <div class="grid-tarjetas" style="grid-template-columns: 1.3fr 1fr; align-items:start;">
+          <div class="tarjeta">
+            <h3>Resumen ejecutivo</h3>
+            <p id="texto-resumen-ejecutivo">Cargando resumen ejecutivo…</p>
+            <div class="meta-linea" style="margin-top:10px;">
+              <span>Periodo: <strong id="inicio-periodo">—</strong></span>
+              <span>· Publicado: <strong id="inicio-fecha">—</strong></span>
+            </div>
+          </div>
+          <div class="tarjeta">
+            <h3>Resultado general por área</h3>
+            <canvas id="grafico-inicio-radar" role="img" aria-label="Gráfico radar de resultados por área" height="220"></canvas>
+          </div>
+        </div>
+
+        <div class="tarjeta" style="margin-top:16px;">
+          <h3>Hallazgos prioritarios</h3>
+          <div class="grid-tarjetas grid-3" id="lista-hallazgos-prioritarios"></div>
+        </div>
+      </section>
+
+      <!-- =================== RESULTADOS =================== -->
+      <section class="vista oculto" id="vista-resultados">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Diagnóstico por área</span>
+            <h1>Resultados</h1>
+            <p>Comparación de cada área frente a la meta definida junto a Consultoría.</p>
+          </div>
+        </div>
+
+        <div class="grid-tarjetas grid-2" style="margin-bottom:20px;">
+          <div class="tarjeta">
+            <h3>Comparación por área</h3>
+            <canvas id="grafico-resultados-radar" height="230"></canvas>
+          </div>
+          <div class="tarjeta">
+            <h3>Resultado frente a meta</h3>
+            <canvas id="grafico-resultados-barras" height="230"></canvas>
+          </div>
+        </div>
+
+        <div class="barra-filtros">
+          <div class="grupo-filtro">
+            <label for="filtro-area-resultados">Área</label>
+            <select id="filtro-area-resultados"><option value="todas">Todas</option></select>
+          </div>
+          <div class="grupo-filtro">
+            <label for="filtro-estado-resultados">Clasificación</label>
+            <select id="filtro-estado-resultados">
+              <option value="todas">Todas</option>
+              <option value="positivo">Positivo</option>
+              <option value="alerta">Alerta</option>
+              <option value="critico">Crítico</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-tarjetas grid-3" id="lista-areas"></div>
+      </section>
+
+      <!-- =================== FORTALEZAS =================== -->
+      <section class="vista oculto" id="vista-fortalezas">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Lo que funciona bien</span>
+            <h1>Fortalezas</h1>
+            <p>Elementos que Consultoría recomienda mantener o potenciar.</p>
+          </div>
+        </div>
+        <div class="barra-filtros">
+          <div class="grupo-filtro">
+            <label for="filtro-area-fortalezas">Área</label>
+            <select id="filtro-area-fortalezas"><option value="todas">Todas</option></select>
+          </div>
+          <div class="grupo-filtro">
+            <label for="filtro-relevancia-fortalezas">Relevancia</label>
+            <select id="filtro-relevancia-fortalezas">
+              <option value="todas">Todas</option>
+              <option value="alta">Alta</option>
+              <option value="media">Media</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid-tarjetas grid-2" id="lista-fortalezas"></div>
+      </section>
+
+      <!-- =================== OPORTUNIDADES =================== -->
+      <section class="vista oculto" id="vista-oportunidades">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Áreas de mejora</span>
+            <h1>Oportunidades de mejora</h1>
+            <p>Priorizadas por Consultoría según impacto, urgencia y dificultad.</p>
+          </div>
+        </div>
+        <div class="barra-filtros">
+          <div class="grupo-filtro">
+            <label for="filtro-area-oportunidades">Área</label>
+            <select id="filtro-area-oportunidades"><option value="todas">Todas</option></select>
+          </div>
+          <div class="grupo-filtro">
+            <label for="filtro-prioridad-oportunidades">Prioridad</label>
+            <select id="filtro-prioridad-oportunidades">
+              <option value="todas">Todas</option>
+              <option value="accion-inmediata">Acción inmediata</option>
+              <option value="proyecto-prioritario">Proyecto prioritario</option>
+              <option value="mejora-rapida">Mejora rápida</option>
+              <option value="mejora-futura">Mejora futura</option>
+            </select>
+          </div>
+          <div class="grupo-filtro">
+            <label for="filtro-interna-oportunidades">Resolución</label>
+            <select id="filtro-interna-oportunidades">
+              <option value="todas">Todas</option>
+              <option value="si">Interna</option>
+              <option value="no">Requiere acompañamiento</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid-tarjetas grid-2" id="lista-oportunidades"></div>
+      </section>
+
+      <!-- =================== PLAN DE ACCIÓN =================== -->
+      <section class="vista oculto" id="vista-plan-accion">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Ejecución</span>
+            <h1>Plan de acción</h1>
+            <p>Seguimiento de las acciones derivadas de las recomendaciones de Consultoría.</p>
+          </div>
+        </div>
+
+        <div class="grid-tarjetas grid-4" style="margin-bottom:18px;">
+          <div class="panel-kpi"><span class="etiqueta">Avance general</span><span class="valor dato-cifra" id="plan-avance-general">—</span><div class="barra-progreso" style="margin-top:6px;"><span id="plan-barra-general" style="width:0%"></span></div></div>
+          <div class="panel-kpi"><span class="etiqueta">No iniciadas</span><span class="valor dato-cifra" id="plan-conteo-no-iniciada">—</span></div>
+          <div class="panel-kpi tono-ambar"><span class="etiqueta">En proceso</span><span class="valor dato-cifra" id="plan-conteo-en-proceso">—</span></div>
+          <div class="panel-kpi tono-verde"><span class="etiqueta">Completadas</span><span class="valor dato-cifra" id="plan-conteo-completada">—</span></div>
+        </div>
+
+        <div class="barra-filtros">
+          <div class="grupo-filtro">
+            <label for="filtro-area-plan">Área</label>
+            <select id="filtro-area-plan"><option value="todas">Todas</option></select>
+          </div>
+          <div class="grupo-filtro">
+            <label for="filtro-estado-plan">Estado</label>
+            <select id="filtro-estado-plan">
+              <option value="todas">Todos</option>
+              <option value="no-iniciada">No iniciada</option>
+              <option value="en-proceso">En proceso</option>
+              <option value="bloqueada">Bloqueada</option>
+              <option value="completada">Completada</option>
+            </select>
+          </div>
+          <div class="conmutador-vista">
+            <button type="button" class="activo" data-vista-plan="tarjetas">Tarjetas</button>
+            <button type="button" data-vista-plan="tabla">Tabla</button>
+          </div>
+        </div>
+
+        <div class="grid-tarjetas grid-2" id="lista-plan-tarjetas"></div>
+
+        <div class="tabla-envoltorio oculto" id="contenedor-plan-tabla">
+          <table class="tabla-datos">
+            <thead>
+              <tr><th>Acción</th><th>Área</th><th>Responsable</th><th>Estado</th><th>Avance</th><th>Prioridad</th><th>Fecha límite</th></tr>
+            </thead>
+            <tbody id="cuerpo-plan-tabla"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =================== ASISTENTE DE IA =================== -->
+      <section class="vista oculto" id="vista-asistente-ia">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Asistente del informe</span>
+            <h1>Consultar a la IA</h1>
+            <p>Preguntas sobre el informe, respondidas con contenido de demostración.</p>
+          </div>
+        </div>
+
+        <div class="layout-chat">
+          <div>
+            <h3 style="font-size:0.95rem;">Preguntas sugeridas</h3>
+            <div class="panel-sugeridas" id="lista-preguntas-sugeridas"></div>
+          </div>
+
+          <div class="tarjeta ventana-chat">
+            <span class="chat-etiqueta-demo">Asistente de demostración. Todavía no utiliza una IA real</span>
+            <div class="chat-mensajes" id="chat-mensajes"></div>
+            <form class="form-chat" id="form-chat">
+              <label for="entrada-chat" class="solo-lector">Escribí tu pregunta</label>
+              <input type="text" id="entrada-chat" placeholder="Escribí tu pregunta sobre el informe…" autocomplete="off">
+              <button type="submit" class="boton boton-primario">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== DOCUMENTOS =================== -->
+      <section class="vista oculto" id="vista-documentos">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Biblioteca</span>
+            <h1>Documentos</h1>
+            <p>Todos los entregables del proyecto de diagnóstico.</p>
+          </div>
+        </div>
+        <div class="tabla-envoltorio tarjeta" style="padding:0;">
+          <table class="tabla-datos">
+            <thead>
+              <tr><th>Documento</th><th>Tipo</th><th>Fecha</th><th>Versión</th><th>Estado</th><th>Tamaño</th><th></th></tr>
+            </thead>
+            <tbody id="cuerpo-documentos"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =================== SOLICITUDES =================== -->
+      <section class="vista oculto" id="vista-solicitudes">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Acompañamiento</span>
+            <h1>Solicitudes</h1>
+            <p>Seguimiento de tus pedidos de acompañamiento a Consultoría.</p>
+          </div>
+        </div>
+        <div id="contenedor-solicitudes"></div>
+      </section>
+
+      <!-- =================== PERFIL =================== -->
+      <section class="vista oculto" id="vista-perfil">
+        <div class="encabezado-seccion">
+          <div>
+            <span class="eyebrow">Tu cuenta</span>
+            <h1>Perfil</h1>
+            <p>Información de contacto utilizada para este proyecto (datos ficticios).</p>
+          </div>
+        </div>
+        <div class="tarjeta" style="max-width:520px;">
+          <div class="campo"><label>Nombre</label><input type="text" id="perfil-nombre" disabled></div>
+          <div class="fila-2">
+            <div class="campo"><label>Cargo</label><input type="text" id="perfil-cargo" disabled></div>
+            <div class="campo"><label>Empresa</label><input type="text" id="perfil-empresa" disabled></div>
+          </div>
+          <div class="fila-2">
+            <div class="campo"><label>Correo</label><input type="text" id="perfil-correo" disabled></div>
+            <div class="campo"><label>Teléfono</label><input type="text" id="perfil-telefono" disabled></div>
+          </div>
+          <h3 style="font-size:0.95rem;margin-top:6px;">Preferencias de notificación</h3>
+          <div id="contenedor-preferencias"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ============================= MODAL: SOLICITAR ACOMPAÑAMIENTO ============================= -->
+<div class="fondo-modal" id="fondo-modal-solicitud">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-solicitud">
+    <div class="modal-encabezado">
+      <h2 id="titulo-modal-solicitud">Quiero acompañamiento</h2>
+      <button class="modal-cerrar" id="cerrar-modal-solicitud" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-cuerpo">
+      <div id="vista-formulario-solicitud">
+        <p style="font-size:0.85rem;">Esta solicitud es una simulación: se guarda localmente en tu navegador y no se envía a ningún correo real.</p>
+        <form id="form-solicitud">
+          <div class="fila-2">
+            <div class="campo"><label for="sol-empresa">Empresa</label><input type="text" id="sol-empresa" disabled></div>
+            <div class="campo"><label for="sol-contacto">Persona de contacto</label><input type="text" id="sol-contacto" required></div>
+          </div>
+          <div class="fila-2">
+            <div class="campo"><label for="sol-correo">Correo</label><input type="email" id="sol-correo" required></div>
+            <div class="campo"><label for="sol-telefono">Teléfono (opcional)</label><input type="tel" id="sol-telefono"></div>
+          </div>
+          <div class="campo">
+            <label for="sol-oportunidad">Oportunidad seleccionada</label>
+            <input type="text" id="sol-oportunidad" disabled>
+          </div>
+          <div class="campo">
+            <label for="sol-servicio">Servicio sugerido</label>
+            <input type="text" id="sol-servicio" disabled>
+          </div>
+          <div class="campo">
+            <label for="sol-comentario">Comentario</label>
+            <textarea id="sol-comentario" rows="3" placeholder="Contanos brevemente qué necesitás…"></textarea>
+          </div>
+          <div class="fila-2">
+            <div class="campo">
+              <label for="sol-medio">Medio preferido de contacto</label>
+              <select id="sol-medio">
+                <option>Correo electrónico</option>
+                <option>Teléfono</option>
+                <option>Videollamada</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="sol-horario">Horario preferido</label>
+              <select id="sol-horario">
+                <option>Mañana</option>
+                <option>Tarde</option>
+                <option>Cualquier horario</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="vista-confirmacion-solicitud" class="oculto">
+        <div class="confirmacion-envio">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+          <h3 style="margin:0;">Solicitud registrada (simulación)</h3>
+          <p style="margin:0;">Tu solicitud fue guardada en este navegador y ya aparece en la sección "Solicitudes". En la versión real, Consultoría la recibiría de inmediato.</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-pie" id="pie-modal-solicitud">
+      <button class="boton boton-secundario" id="cancelar-modal-solicitud">Cancelar</button>
+      <button class="boton boton-primario" id="enviar-modal-solicitud">Enviar solicitud</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= MODAL: DETALLE DE ÁREA ============================= -->
+<div class="fondo-modal" id="fondo-modal-area">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-area">
+    <div class="modal-encabezado">
+      <h2 id="titulo-modal-area">Detalle de área</h2>
+      <button class="modal-cerrar" id="cerrar-modal-area" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-cuerpo" id="cuerpo-modal-area"></div>
+  </div>
+</div>
+
+<!-- ============================= MODAL: DETALLE DE SOLICITUD ============================= -->
+<div class="fondo-modal" id="fondo-modal-detalle-solicitud">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-detalle-solicitud">
+    <div class="modal-encabezado">
+      <h2 id="titulo-modal-detalle-solicitud">Detalle de la solicitud</h2>
+      <button class="modal-cerrar" id="cerrar-modal-detalle-solicitud" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-cuerpo" id="cuerpo-modal-detalle-solicitud"></div>
+  </div>
+</div>
+
+<script src="js/datos-demo.js"></script>
+<script src="js/servicios.js"></script>
+<script src="js/utilidades.js"></script>
+<script src="js/cliente.js"></script>
+</body>
+</html>

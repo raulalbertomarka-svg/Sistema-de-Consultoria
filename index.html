@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Consultoría · Acceso</title>
+<meta name="description" content="Prototipo de acceso al Portal de Consultoría">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<span class="etiqueta-demo-header etiqueta-demo-flotante" role="status">
+  <span class="visible-escritorio-badge">Entorno de demostración · Datos ficticios</span>
+  <span class="visible-movil-badge">Demo</span>
+</span>
+
+<main class="pantalla-acceso">
+
+  <section class="acceso-panel-marca" aria-hidden="false">
+    <div class="acceso-marca-logo">
+      <img src="assets/logo.svg" alt="Logo provisional de Consultoría">
+    </div>
+
+    <p class="acceso-frase">
+      Convertimos <span>96 páginas</span> de diagnóstico en decisiones claras que su equipo puede accionar hoy.
+    </p>
+
+    <div class="acceso-lista-valores">
+      <div><strong>5</strong>áreas evaluadas</div>
+      <div><strong>8</strong>oportunidades priorizadas</div>
+      <div><strong>72<span style="font-size:0.9rem">/100</span></strong>puntuación general</div>
+    </div>
+  </section>
+
+  <section class="acceso-panel-formulario">
+    <div class="tarjeta-login">
+      <h1>Bienvenido de nuevo</h1>
+      <p class="subtitulo">Ingresá a tu portal de resultados de consultoría.</p>
+
+      <div class="selector-perfil" role="tablist" aria-label="Seleccionar tipo de acceso">
+        <button type="button" id="btn-perfil-cliente" class="activo" role="tab" aria-selected="true">Vista cliente</button>
+        <button type="button" id="btn-perfil-admin" role="tab" aria-selected="false">Vista Consultoría</button>
+      </div>
+
+      <div id="mensaje-error" class="mensaje-error oculto" role="alert"></div>
+
+      <form id="form-login" novalidate>
+        <div class="campo">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" placeholder="nombre@empresa.com" autocomplete="username">
+        </div>
+        <div class="campo">
+          <label for="clave">Contraseña</label>
+          <input type="password" id="clave" name="clave" placeholder="••••••••" autocomplete="current-password">
+        </div>
+
+        <div class="fila-entre">
+          <span></span>
+          <a href="#" class="enlace-sutil" id="enlace-olvido">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="boton boton-primario" id="btn-ingresar">Ingresar</button>
+      </form>
+
+      <div class="aviso-demo">
+        <span aria-hidden="true">ℹ️</span>
+        <span>Esta es una demostración. No se valida contraseña ni se envían datos reales: cualquier correo y contraseña te permitirán ingresar al perfil seleccionado.</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/datos-demo.js"></script>
+<script src="js/servicios.js"></script>
+<script src="js/utilidades.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
